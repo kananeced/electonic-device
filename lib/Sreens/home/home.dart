@@ -51,36 +51,104 @@ class _HomeState extends State<Home> {
                 child: Row(
                     children: List.generate(
                         6,
-                        (index) => SizedBox(
-                              child: Column(
-                                // mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(left: 10),
-                                    height: 70,
-                                    width: 70,
-                                    padding: const EdgeInsets.all(10),
+                        (index) => Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  height: 70,
+                                  width: 70,
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.white.withOpacity(0.2),
+                                    ),
+                                    borderRadius: BorderRadius.circular(35),
+                                  ),
+                                  child: InkWell(
+                                      child: Container(
                                     decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.white.withOpacity(0.2),
-                                      ),
+                                      image: const DecorationImage(
+                                          image: AssetImage(
+                                              'assets/logo/crepiscule.jpg'),
+                                          fit: BoxFit.fill),
                                       borderRadius: BorderRadius.circular(35),
                                     ),
-                                    child: const Text(
-                                      'data',
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  const Text(
-                                    'Mbote',
-                                    textAlign: TextAlign.center,
-                                  )
-                                ],
-                              ),
+                                  )),
+                                ),
+                                const Text(
+                                  'Mbote',
+                                  // textAlign: TextAlign.center,
+                                )
+                              ],
                             ))),
               ),
-            )
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Expanded(
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35),
+                  ),
+                  color: const Color.fromARGB(255, 21, 33, 39).withOpacity(0.7),
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(top: 50, left: 25, bottom: 5),
+                    child: Row(
+                      children: List.generate(
+                          5,
+                          (index) => Stack(
+                                  alignment: Alignment.bottomCenter,
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                        right: 15,
+                                      ),
+                                      width: 300,
+                                      decoration: BoxDecoration(
+                                        image: const DecorationImage(
+                                            image: AssetImage(
+                                                'assets/logo/pallais.jpg'),
+                                            fit: BoxFit.fill),
+                                        borderRadius: BorderRadius.circular(35),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                        right: 15,
+                                      ),
+                                      height: 130,
+                                      width: 300,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.only(
+                                          bottomLeft: Radius.circular(35),
+                                          bottomRight: Radius.circular(35),
+                                        ),
+                                        color: Colors.white.withOpacity(0.4),
+                                      ),
+                                    )
+                                  ])),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 150,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 21, 33, 39).withOpacity(0.7),
+              ),
+            ),
           ],
         ),
       ),

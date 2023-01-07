@@ -36,11 +36,15 @@ class _LoginState extends State<Login> {
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    opacity: 0.5,
+                    opacity: 1,
                     image: AssetImage('assets/logo/appart.jpg'),
                     fit: BoxFit.fill)),
           ),
-          container(),
+          Container(
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+              alignment: Alignment.bottomCenter,
+              child: container()),
         ],
       ),
     );
@@ -61,6 +65,7 @@ class _LoginState extends State<Login> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Row(
                 children: [
@@ -208,7 +213,7 @@ class _LoginState extends State<Login> {
     } else if (email.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Entrez votre email '),
+          content: Text('Veiller saisir votre email '),
         ),
       );
     } else if (password.text.isEmpty) {

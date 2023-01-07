@@ -16,7 +16,7 @@ class HiSmart extends StatelessWidget {
       title: 'Hi Smart Home',
       theme: ThemeData(
         primaryColor: Colors.blue,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 45, 97, 139),
+        //scaffoldBackgroundColor: const Color.fromARGB(255, 45, 97, 139),
       ),
       home: const SplashScreen(),
       routes: {

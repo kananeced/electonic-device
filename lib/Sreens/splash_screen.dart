@@ -28,8 +28,16 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage("assets/logo/logo1.png"),
-          )),
+                image: AssetImage("assets/logo/logo1.png"),
+              ),
+              color: Color.fromARGB(255, 2, 25, 66),
+              gradient: LinearGradient(
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.centerRight,
+                  colors: <Color>[
+                    Color.fromARGB(255, 218, 126, 235),
+                    Color.fromARGB(255, 2, 25, 66),
+                  ])),
         ),
       ),
     );

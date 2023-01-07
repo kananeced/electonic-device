@@ -31,11 +31,15 @@ class _SignUpState extends State<SignUp> {
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    opacity: 0.5,
+                    opacity: 1,
                     image: AssetImage('assets/logo/appart.jpg'),
                     fit: BoxFit.fill)),
           ),
-          container(),
+          Container(
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+              alignment: Alignment.bottomCenter,
+              child: container()),
         ],
       ),
     );
@@ -43,8 +47,8 @@ class _SignUpState extends State<SignUp> {
 
   Widget container() {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height / 1.3,
+      // width: MediaQuery.of(context).size.width,
+      //height: MediaQuery.of(context).size.height / 1.3,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(35),
@@ -53,9 +57,11 @@ class _SignUpState extends State<SignUp> {
         color: Color.fromARGB(255, 18, 28, 37),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        padding:
+            const EdgeInsets.only(bottom: 50, right: 20, left: 20, top: 30),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Row(
                 children: [
@@ -157,7 +163,7 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               const SizedBox(
-                height: 150,
+                height: 80,
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
@@ -171,36 +177,33 @@ class _SignUpState extends State<SignUp> {
                       color: const Color.fromARGB(255, 3, 127, 230),
                       colorText: Colors.white.withOpacity(0.7)),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 40),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Already have an account? ',
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Already have an account? ',
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.5),
+                          fontSize: 16,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, const Login().routeName);
+                        },
+                        child: Text(
+                          'Sign In',
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.5),
+                            color: Colors.white.withOpacity(0.9),
                             fontSize: 16,
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushReplacementNamed(
-                                context, const Login().routeName);
-                          },
-                          child: Text(
-                            'Sign In',
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.9),
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   )
                 ],
               ),

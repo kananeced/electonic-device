@@ -208,7 +208,7 @@ class _LoginState extends State<Login> {
     } else if (email.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Veiller saisir votre email'),
+          content: Text('Entrez votre email '),
         ),
       );
     } else if (password.text.isEmpty) {

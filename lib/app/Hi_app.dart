@@ -18,7 +18,7 @@ class HiSmart extends StatelessWidget {
         primaryColor: Colors.blue,
         //scaffoldBackgroundColor: const Color.fromARGB(255, 45, 97, 139),
       ),
-      home: const SplashScreen(),
+      home: const Home(),
       routes: {
         const Accueil().routeName: (context) => const Accueil(),
         const SignUp().routeName: (context) => const SignUp(),

@@ -10,7 +10,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   init() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Navigator.pushReplacementNamed(context, const Accueil().routeName);
     });
   }
@@ -28,15 +28,15 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/logo/logo1.png"),
+                image: AssetImage("assets/logo/Hi.png"),
               ),
-              color: Color.fromARGB(255, 2, 25, 66),
+              color: Color.fromARGB(255, 0, 17, 46),
               gradient: LinearGradient(
-                  begin: Alignment.bottomLeft,
+                  begin: Alignment.bottomCenter,
                   end: Alignment.centerRight,
                   colors: <Color>[
-                    Color.fromARGB(255, 218, 126, 235),
-                    Color.fromARGB(255, 2, 25, 66),
+                    Color.fromARGB(255, 89, 60, 94),
+                    Color.fromARGB(255, 0, 17, 46),
                   ])),
         ),
       ),

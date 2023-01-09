@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:hi_smart_home/Sreens/widget/Devices.dart';
 import 'package:hi_smart_home/Sreens/widget/utility.dart';
 
 class Home extends StatefulWidget {
@@ -10,12 +13,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Map<int, bool> isSelecteditem = {};
+  bool isSelected = false;
+  List<Device> presentDevice = [
+    Device(name: 'bonjour', image: 'assets/logo/crepiscule.jpg'),
+    Device(name: 'bonjour', image: 'assets/logo/crepiscule.jpg'),
+    Device(name: 'bonjour', image: 'assets/logo/crepiscule.jpg'),
+    Device(name: 'bonjour', image: 'assets/logo/crepiscule.jpg'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          color: Color.fromRGBO(37, 49, 61, 1),
+          color: Color.fromARGB(255, 1, 29, 43),
         ),
         child: Column(
           children: [
@@ -44,49 +56,72 @@ class _HomeState extends State<Home> {
                 )
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 10),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                    children: List.generate(
-                        6,
-                        (index) => Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(left: 10),
-                                  height: 70,
-                                  width: 70,
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.white.withOpacity(0.2),
-                                    ),
-                                    borderRadius: BorderRadius.circular(35),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: presentDevice.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 20, top: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 5,
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  presentDevice[index].selected =
+                                      !presentDevice[index].selected;
+                                  //log(presentDevice[index].selected.toString());
+                                });
+                              },
+                              child: Container(
+                                width: 70,
+                                height: 70,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: presentDevice[index].selected
+                                        ? Colors.white
+                                        : Colors.black,
                                   ),
-                                  child: InkWell(
-                                      child: Container(
-                                    decoration: BoxDecoration(
-                                      image: const DecorationImage(
-                                          image: AssetImage(
-                                              'assets/logo/crepiscule.jpg'),
-                                          fit: BoxFit.fill),
-                                      borderRadius: BorderRadius.circular(35),
-                                    ),
-                                  )),
+                                  shape: BoxShape.circle,
+                                  color: presentDevice[index].selected
+                                      ? Colors.white
+                                      : Colors.white.withOpacity(0.5),
                                 ),
-                                const Text(
-                                  'Mbote',
-                                  // textAlign: TextAlign.center,
-                                )
-                              ],
-                            ))),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          presentDevice[index].image,
+                                        ),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            presentDevice[index].name,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }),
             ),
             Expanded(
               child: Container(
@@ -155,3 +190,24 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+// class ListItem extends StatefulWidget {
+//   const ListItem({super.key});
+
+//   @override
+//   State<ListItem> createState() => _ListItemState();
+// }
+
+// class _ListItemState extends State<ListItem> {
+  
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//         children: List.generate(6, (index) {
+//       //isSelected = isSelecteditem[index] ?? false;
+      
+//     }));
+//   }
+// }
+ 
+                 

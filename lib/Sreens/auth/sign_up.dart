@@ -22,12 +22,12 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      //resizeToAvoidBottomInset: false,
       body: Stack(
         alignment: AlignmentDirectional.bottomEnd,
         children: [
           Container(
-            width: MediaQuery.of(context).size.width,
+            width: double.infinity,
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -47,8 +47,8 @@ class _SignUpState extends State<SignUp> {
 
   Widget container() {
     return Container(
-      // width: MediaQuery.of(context).size.width,
-      //height: MediaQuery.of(context).size.height / 1.3,
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 1.3,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(35),

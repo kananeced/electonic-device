@@ -140,33 +140,37 @@ class _HomeState extends State<Home> {
                                                       const EdgeInsets.only(
                                                     bottom: 5,
                                                   ),
-                                                  child: Container(
-                                                    width: 70,
-                                                    height: 70,
-                                                    decoration: BoxDecoration(
-                                                        border: Border.all(
-                                                            color: Colors.grey),
-                                                        shape: BoxShape.circle,
-                                                        color: equipement[index]
-                                                                .selected
-                                                            ? Colors.white
-                                                            : null),
-                                                    child: IconButton(
-                                                      icon: Icon(
-                                                        equipement[index].icon,
-                                                        color: Colors.white,
-                                                      ),
-                                                      onPressed: () {
-                                                        setState(() {
-                                                          equipement[index]
-                                                                  .selected =
-                                                              !equipement[index]
-                                                                  .selected;
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        equipement[index]
+                                                                .selected =
+                                                            !equipement[index]
+                                                                .selected;
 
-                                                          //log(presentDevice[index].selected.toString());
-                                                        });
-                                                      },
-                                                    ),
+                                                        //log(presentDevice[index].selected.toString());
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                        width: 70,
+                                                        height: 70,
+                                                        decoration: BoxDecoration(
+                                                            border: Border.all(
+                                                                width: 1.5,
+                                                                color: Colors
+                                                                    .grey),
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            color: equipement[
+                                                                        index]
+                                                                    .selected
+                                                                ? Colors.white
+                                                                : null),
+                                                        child: Icon(
+                                                          equipement[index]
+                                                              .icon,
+                                                          color: Colors.white,
+                                                        )),
                                                   ),
                                                 ),
                                               ],
@@ -187,6 +191,9 @@ class _HomeState extends State<Home> {
             height: 150,
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 21, 33, 39).withOpacity(0.7),
+            ),
+            child: Row(
+              children: [Container()],
             ),
           ),
         ],
@@ -273,7 +280,8 @@ class _ListItemState extends State<ListItem> {
                               shape: BoxShape.circle,
                               color: presentDevice[index].selected
                                   ? Colors.white
-                                  : Colors.white.withOpacity(0.5),
+                                  : const Color.fromARGB(255, 255, 255, 255)
+                                      .withOpacity(0.1),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(10),
@@ -297,8 +305,10 @@ class _ListItemState extends State<ListItem> {
                       Text(
                         presentDevice[index].name,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.white,
+                        style: TextStyle(
+                          color: presentDevice[index].selected
+                              ? Colors.white
+                              : Colors.grey,
                         ),
                       )
                     ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app/Hi_app.dart';
+import 'app/hiapp.dart';
 
 void main() {
   runApp(const HiSmart());

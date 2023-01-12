@@ -30,7 +30,8 @@ class _HomeState extends State<Home> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
+        padding:
+            const EdgeInsets.only(left: 25, right: 25, bottom: 40, top: 20),
         child: GNav(
           textStyle: const TextStyle(
             fontSize: 20,
@@ -94,38 +95,42 @@ class _ListItemState extends State<ListItem> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 40, left: 20),
-                child: title(
-                    name: 'Mornin\' CoolCeda!',
-                    colorText: Colors.white,
-                    width: 25),
+        SizedBox(
+          height: 80,
+          child: Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 40, left: 20),
+                  child: title(
+                      name: 'Mornin\' CoolCeda!',
+                      colorText: Colors.white,
+                      width: 25),
+                ),
               ),
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.pushReplacementNamed(
-                    context, const Settings().routeName);
-              },
-              child: Container(
-                width: 100,
-                height: 100,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/logo/crepiscule.jpg'),
-                        fit: BoxFit.fill),
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40),
-                      bottomLeft: Radius.circular(40),
-                    )),
-              ),
-            )
-          ],
+              InkWell(
+                onTap: () {
+                  Navigator.pushReplacementNamed(
+                      context, const Settings().routeName);
+                },
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/logo/crepiscule.jpg'),
+                          fit: BoxFit.fill),
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(40),
+                        bottomLeft: Radius.circular(40),
+                      )),
+                ),
+              )
+            ],
+          ),
         ),
-        Expanded(
+        SizedBox(
+          height: 130,
           child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               itemCount: presentDevice.length,
@@ -136,46 +141,41 @@ class _ListItemState extends State<ListItem> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: 5,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              presentDevice[index].selected =
-                                  !presentDevice[index].selected;
-                              //log(presentDevice[index].selected.toString());
-                            });
-                          },
-                          child: Container(
-                            width: 70,
-                            height: 70,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: presentDevice[index].selected
-                                    ? Colors.white
-                                    : Colors.black,
-                              ),
-                              shape: BoxShape.circle,
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            presentDevice[index].selected =
+                                !presentDevice[index].selected;
+                            //log(presentDevice[index].selected.toString());
+                          });
+                        },
+                        child: Container(
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            border: Border.all(
                               color: presentDevice[index].selected
                                   ? Colors.white
-                                  : const Color.fromARGB(255, 255, 255, 255)
-                                      .withOpacity(0.1),
+                                  : Colors.black,
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Container(
-                                width: 50,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      presentDevice[index].image,
-                                    ),
-                                    fit: BoxFit.fill,
+                            shape: BoxShape.circle,
+                            color: presentDevice[index].selected
+                                ? Colors.white
+                                : const Color.fromARGB(255, 255, 255, 255)
+                                    .withOpacity(0.1),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                    presentDevice[index].image,
                                   ),
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                             ),
@@ -217,168 +217,178 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Expanded(child: ListItem()),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 1.7,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(35),
-              topRight: Radius.circular(35),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const ListItem(),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 1.6,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(35),
+                topRight: Radius.circular(35),
+              ),
+              color: Color.fromARGB(146, 21, 33, 39),
             ),
-            color: Color.fromARGB(146, 21, 33, 39),
-          ),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 50, left: 25, bottom: 5),
-              child: Row(
-                children: List.generate(
-                    5,
-                    (index) =>
-                        Stack(alignment: Alignment.bottomCenter, children: [
-                          Container(
-                            margin: const EdgeInsets.only(
-                              right: 15,
-                            ),
-                            width: 300,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                  image: AssetImage('assets/logo/pallais.jpg'),
-                                  fit: BoxFit.fill),
-                              borderRadius: BorderRadius.circular(35),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                              right: 15,
-                            ),
-                            height: 140,
-                            width: 300,
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(35),
-                                bottomRight: Radius.circular(35),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 50, left: 25, bottom: 5),
+                child: Row(
+                  children: List.generate(
+                      5,
+                      (index) =>
+                          Stack(alignment: Alignment.bottomCenter, children: [
+                            Container(
+                              margin: const EdgeInsets.only(
+                                right: 15,
                               ),
-                              color: const Color.fromARGB(255, 134, 131, 131)
-                                  .withOpacity(0.8),
+                              width: 300,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                    image:
+                                        AssetImage('assets/logo/pallais.jpg'),
+                                    fit: BoxFit.fill),
+                                borderRadius: BorderRadius.circular(35),
+                              ),
                             ),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 20, left: 20, right: 20, bottom: 15),
-                                  child: Row(
-                                    children: [
-                                      const Expanded(
-                                          child: Text(
-                                        'Bed Room',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        ),
-                                      )),
-                                      Text.rich(
-                                        TextSpan(
-                                            text: '2',
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18,
-                                            ),
-                                            children: [
-                                              TextSpan(
-                                                text: '/5 is',
-                                                style: TextStyle(
-                                                  color: Colors.white
-                                                      .withOpacity(0.5),
-                                                  fontSize: 18,
-                                                ),
-                                              ),
-                                              const TextSpan(
-                                                text: ' on',
-                                                style: TextStyle(
-                                                  color: Color.fromARGB(
-                                                      255, 196, 104, 104),
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 18,
-                                                ),
-                                              )
-                                            ]),
-                                      )
-                                    ],
-                                  ),
+                            Container(
+                              margin: const EdgeInsets.only(
+                                right: 15,
+                              ),
+                              height: 140,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(35),
+                                  bottomRight: Radius.circular(35),
                                 ),
-                                Expanded(
-                                  child: ListView.builder(
-                                      itemCount: equipement.length,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index) {
-                                        return Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: 20,
+                                color: const Color.fromARGB(255, 134, 131, 131)
+                                    .withOpacity(0.8),
+                              ),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20,
+                                        left: 20,
+                                        right: 20,
+                                        bottom: 15),
+                                    child: Row(
+                                      children: [
+                                        const Expanded(
+                                            child: Text(
+                                          'Bed Room',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
                                           ),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                  bottom: 5,
+                                        )),
+                                        Text.rich(
+                                          TextSpan(
+                                              text: '2',
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                              ),
+                                              children: [
+                                                TextSpan(
+                                                  text: '/5 is',
+                                                  style: TextStyle(
+                                                    color: Colors.white
+                                                        .withOpacity(0.5),
+                                                    fontSize: 18,
+                                                  ),
                                                 ),
-                                                child: GestureDetector(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      equipement[index]
-                                                              .selected =
-                                                          !equipement[index]
-                                                              .selected;
+                                                const TextSpan(
+                                                  text: ' on',
+                                                  style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 196, 104, 104),
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18,
+                                                  ),
+                                                )
+                                              ]),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: ListView.builder(
+                                        itemCount: equipement.length,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index) {
+                                          return Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 20,
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    bottom: 5,
+                                                  ),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        equipement[index]
+                                                                .selected =
+                                                            !equipement[index]
+                                                                .selected;
 
-                                                      //log(presentDevice[index].selected.toString());
-                                                    });
-                                                  },
-                                                  child: Container(
-                                                      width: 70,
-                                                      height: 70,
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              width: 1.5,
-                                                              color:
-                                                                  Colors.grey),
-                                                          shape:
-                                                              BoxShape.circle,
+                                                        //log(presentDevice[index].selected.toString());
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                        width: 70,
+                                                        height: 70,
+                                                        decoration: BoxDecoration(
+                                                            border: Border.all(
+                                                                width: 1.5,
+                                                                color: Colors
+                                                                    .grey),
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            color: equipement[
+                                                                        index]
+                                                                    .selected
+                                                                ? Colors.white
+                                                                : null),
+                                                        child: Icon(
+                                                          equipement[index]
+                                                              .icon,
                                                           color:
                                                               equipement[index]
                                                                       .selected
-                                                                  ? Colors.white
-                                                                  : null),
-                                                      child: Icon(
-                                                        equipement[index].icon,
-                                                        color: equipement[index]
-                                                                .selected
-                                                            ? Colors.black
-                                                            : Colors.white,
-                                                      )),
+                                                                  ? Colors.black
+                                                                  : Colors
+                                                                      .white,
+                                                        )),
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }),
-                                ),
-                              ],
-                            ),
-                          )
-                        ])),
+                                              ],
+                                            ),
+                                          );
+                                        }),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ])),
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

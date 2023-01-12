@@ -3,7 +3,6 @@ import 'package:hi_smart_home/Sreens/auth/accueil.dart';
 import 'package:hi_smart_home/Sreens/auth/login.dart';
 import 'package:hi_smart_home/Sreens/auth/sign_up.dart';
 import 'package:hi_smart_home/Sreens/settings/settings.dart';
-//import 'package:hi_smart_home/Sreens/splash_screen.dart';
 
 import '../Sreens/home/home.dart';
 
@@ -17,7 +16,7 @@ class HiSmart extends StatelessWidget {
       title: 'Hi Smart Home',
       theme: ThemeData(
         primaryColor: Colors.blue,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 1, 29, 43),
+        scaffoldBackgroundColor: const Color.fromARGB(185, 3, 0, 49),
       ),
       home: const Home(),
       routes: {

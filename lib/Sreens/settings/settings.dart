@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hi_smart_home/Sreens/widget/utility.dart';
 
 class Settings extends StatefulWidget {
   final String routeName = "/Settings";
@@ -14,6 +13,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
             children: [
@@ -34,8 +34,8 @@ class _SettingsState extends State<Settings> {
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                     colors: [
-                      const Color.fromARGB(255, 1, 29, 43),
-                      const Color.fromARGB(255, 1, 29, 43).withAlpha(10)
+                      const Color.fromARGB(185, 3, 0, 49),
+                      const Color.fromARGB(239, 4, 0, 58).withAlpha(5)
                     ],
                   ),
                 ),
@@ -77,27 +77,60 @@ class _SettingsState extends State<Settings> {
           const SizedBox(
             height: 30,
           ),
-          card(icon: Icons.edit, text: 'Edit Profile'),
+          card(
+              icon: Icons.edit,
+              text: 'Edit Profile',
+              textcolor: Colors.white.withOpacity(0.8)),
           const SizedBox(
             height: 15,
           ),
-          card(icon: Icons.person, text: 'Edit Profile'),
+          card(
+              icon: Icons.person,
+              text: 'Members',
+              textcolor: Colors.white.withOpacity(0.8)),
           const SizedBox(
             height: 15,
           ),
-          card(icon: Icons.settings, text: 'Edit Profile'),
+          card(
+              icon: Icons.settings,
+              text: 'Settings',
+              textcolor: Colors.white.withOpacity(0.8)),
           const SizedBox(
-            height: 40,
+            height: 50,
           ),
-          card(icon: Icons.chat_rounded, text: 'Edit Profile'),
+          card(
+              icon: Icons.chat_sharp,
+              text: 'Term of use',
+              textcolor: Colors.white.withOpacity(0.8)),
           const SizedBox(
             height: 15,
           ),
-          card(icon: Icons.send_rounded, text: 'Edit Profile'),
+          card(
+              icon: Icons.send_outlined,
+              text: 'Contact',
+              textcolor: Colors.white.withOpacity(0.8)),
           const SizedBox(
-            height: 40,
+            height: 50,
           ),
-          card(icon: Icons.logout, text: 'Edit Profile'),
+          card(
+              icon: Icons.logout,
+              text: 'Sign Out',
+              textcolor:
+                  const Color.fromARGB(255, 223, 100, 100).withOpacity(0.8)),
+          const SizedBox(
+            height: 20,
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              'Version 1.1',
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Color.fromARGB(87, 255, 255, 255),
+                fontSize: 20,
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -106,35 +139,40 @@ class _SettingsState extends State<Settings> {
   Widget card({
     IconData? icon,
     String? text,
+    Color? textcolor,
+    Function()? onTap,
   }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(68, 255, 255, 255),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-          child: Row(
-            children: [
-              Icon(
-                icon,
-                color: Colors.white,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                text!,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
-                  fontSize: 20,
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(68, 255, 255, 255),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            child: Row(
+              children: [
+                Icon(
+                  icon,
+                  color: Colors.white,
                 ),
-              ),
-            ],
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  text!,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: textcolor,
+                    fontSize: 20,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hi_smart_home/Sreens/auth/accueil.dart';
 import 'package:hi_smart_home/Sreens/auth/login.dart';
 import 'package:hi_smart_home/Sreens/auth/sign_up.dart';
+import 'package:hi_smart_home/Sreens/settings/delete_member.dart';
+import 'package:hi_smart_home/Sreens/settings/edit_profile.dart';
+import 'package:hi_smart_home/Sreens/settings/member.dart';
+import 'package:hi_smart_home/Sreens/settings/new_member.dart';
 import 'package:hi_smart_home/Sreens/settings/settings.dart';
 
 import '../Sreens/home/home.dart';
@@ -25,6 +29,10 @@ class HiSmart extends StatelessWidget {
         const Login().routeName: (context) => const Login(),
         const Home().routeName: (context) => const Home(),
         const Settings().routeName: (context) => const Settings(),
+        const EditProfil().routeName: (context) => const EditProfil(),
+        const Member().routeName: (context) => const Member(),
+        const NewMember().routeName: (context) => const NewMember(),
+        const DeleteMember().routeName: (context) => const DeleteMember(),
       },
     );
   }

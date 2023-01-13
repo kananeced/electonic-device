@@ -69,10 +69,10 @@ Widget custormTextField(
       border: Border.all(
         color: Colors.white.withOpacity(0.2),
       ),
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(20),
     ),
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       child: Row(
         children: [
           Expanded(
